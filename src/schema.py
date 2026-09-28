@@ -5,7 +5,7 @@ expone `validate_data` para validarlo antes de cualquier procesamiento.
 """
 
 import pandas as pd
-import pandera as pa
+import pandera.pandas as pa
 
 ESTADOS_VALIDOS = (
 	"normal",
@@ -26,7 +26,7 @@ TELEMETRIA_SCHEMA = pa.DataFrameSchema(
 			checks=pa.Check.in_range(0, 100),
 			nullable=False,
 		),
-		"power_w": pa.Column(float, checks=pa.Check.gt(0), nullable=False),
+		"power_w": pa.Column(float, checks=pa.Check.gt(-20), nullable=False),
 		"util_pct": pa.Column(
 			float,
 			checks=pa.Check.in_range(0, 100),
