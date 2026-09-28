@@ -57,7 +57,7 @@ def _trend(values: pd.Series) -> float:
 	return float(slope)
 
 
-def _compute_window_features(window: pd.DataFrame) -> dict:
+def compute_window_features(window: pd.DataFrame) -> dict:
 	"""Calcula el vector de features de UNA ventana cruda (filas ordenadas por segundo).
 
 	Reutilizable por el entrenamiento (ventanas de episodios historicos) y, mas
@@ -117,7 +117,7 @@ def build_window_features(dataframe: pd.DataFrame) -> pd.DataFrame:
 			raise ValueError(
 				f"Episodio {episodio_id} mezcla mas de un estado en una misma ventana."
 			)
-		features = _compute_window_features(group)
+		features = compute_window_features(group)
 		features["episodio_id"] = episodio_id
 		features["ventana_id"] = ventana
 		features[TARGET_COLUMN] = estados[0]
