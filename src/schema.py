@@ -1,7 +1,11 @@
-"""Contrato de validacion para la telemetria publica de GPUs NVIDIA L40."""
+"""Contrato de validacion para la telemetria publica de GPUs NVIDIA L40.
 
+Define el esquema esperado del DataFrame de entrada usando Pandera y
+expone `validate_data` para validarlo antes de cualquier procesamiento.
+"""
+
+import pandas as pd
 import pandera as pa
-
 
 ESTADOS_VALIDOS = (
 	"normal",
@@ -40,3 +44,12 @@ TELEMETRIA_SCHEMA = pa.DataFrameSchema(
 	strict=True,
 	coerce=False,
 )
+
+
+def validate_data(df: pd.DataFrame) -> pd.DataFrame:
+    """Valida `df` contra `TELEMETRIA_SCHEMA`.
+
+    Devuelve el mismo DataFrame si es válido, o lanza
+    `pandera.errors.SchemaError` con el detalle del incumplimiento.
+    """
+    return TELEMETRIA_SCHEMA.validate(df)
