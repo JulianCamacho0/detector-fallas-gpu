@@ -186,6 +186,8 @@ Respuesta (valores ilustrativos, no resultados reales del modelo):
 
 ## Ejecución local
 
+> **Requisito de versión de Python: 3.10.11.** Las versiones fijadas en [requirements.txt](requirements.txt) (por ejemplo `numpy==2.2.6`, `pandas==2.3.3`) están validadas contra Python 3.10.11; usar una versión de Python más nueva puede romper la instalación o el comportamiento de estas dependencias.
+
 ```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
