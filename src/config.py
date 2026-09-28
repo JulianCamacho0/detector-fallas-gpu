@@ -11,4 +11,5 @@ RAW_FEATURE_COLUMNS = ["temp_c", "power_w", "util_pct", "clock_mhz", "ecc_errors
 # Tamano de la ventana (segundos) usado para agregar telemetria cruda en features.
 WINDOW_SIZE = 30
 
+TEST_SIZE = 0.2
 RANDOM_STATE = 42
